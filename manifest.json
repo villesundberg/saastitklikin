@@ -5,7 +5,7 @@
     "content_scripts": [
         {
             "matches": [ "http://*/*", "https://*/*", "file:///*/*" ],
-            "js": [ "lib/jquery.js", "src/saastit.js" ]
+            "js": [ "lib/jquery.js", "src/saastitklikin.js" ]
         }
     ]
 }
