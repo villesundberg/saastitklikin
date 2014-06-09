@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "Säästit klikin",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*", "https://*/*", "file:///*/*" ],
+            "js": [ "lib/jquery.js", "src/saastit.js" ]
+        }
+    ]
+}
