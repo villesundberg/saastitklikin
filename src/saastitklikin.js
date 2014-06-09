@@ -84,7 +84,7 @@ function normalizeLinkText(element) {
     // Turn line breaks into spaces and strip double spaces
     normalized = normalized.replace(/(\r\n|\n|\r)/gm," ").replace(/  +/g, " ");
 
-    return normailzed.trim();
+    return normalized.trim();
 }
 
 function spoil(element, spoiler) {
