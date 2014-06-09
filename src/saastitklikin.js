@@ -33,9 +33,6 @@ function findSpoiler(element) {
         return null;
     }
 
-    console.log(element.innerHTML);
-    console.log(normalizeLinkText(element));
-
     var spoiler = null;
 
     $.each(
