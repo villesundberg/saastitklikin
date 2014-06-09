@@ -28,6 +28,7 @@ var unparsedSpoilers = [];
 
 function findSpoiler(element) {
 
+    // Ignore links with fewer than three words
     if (element.innerHTML.trim().split(" ").length < 3) {
         return null;
     }
@@ -53,7 +54,14 @@ function matchUnparsedSpoiler(spoiler, element) {
 }
 
 function extractUnparsedSpoiler(spoiler, element) {
-    var spoilText = spoiler.replace(element.innerHTML.trim(), "").replace(/[A-Z&]+:/, "").replace(/\.[^a-zA-Z]+$/, ".");
+    var spoilText = spoiler.replace(element.innerHTML.trim(), "");
+
+    // Ignore "IS:", "AM:" and the like
+    spoilText = spoilText.replace(/[A-Z&]+:/, "");
+
+    // Ignore garbage punctuation at the end
+    spoilText = spoilText.replace(/\.[^a-zA-Z]+$/, ".");
+
     var title = element.innerHTML;
     return {
         title: title,
