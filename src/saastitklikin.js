@@ -78,7 +78,6 @@ function spoilLinks() {
         function(i, element){ 
             var spoiler; 
             if ((spoiler = findSpoiler(element))) { 
-                console.log(spoiler);
                 spoil(element, spoiler); 
             } 
         }
