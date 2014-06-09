@@ -54,10 +54,13 @@ function matchUnparsedSpoiler(spoiler, element) {
 }
 
 function extractUnparsedSpoiler(spoiler, element) {
-    var spoilText = spoiler.replace(element.innerHTML.trim(), "");
+    var spoilText = spoiler.replace(element.innerHTML.trim(), "").trim();
 
     // Ignore "IS:", "AM:" and the like
     spoilText = spoilText.replace(/[A-Z&]+:/, "");
+
+    // Ignore trailing word that ends with a colon
+    spoilText = spoilText.replace(/[^\s]+:$/, "");
 
     // Ignore garbage punctuation at the end
     spoilText = spoilText.replace(/\.[^a-zA-Z]+$/, ".");
