@@ -29,9 +29,12 @@ var unparsedSpoilers = [];
 function findSpoiler(element) {
 
     // Ignore links with fewer than three words
-    if (element.innerHTML.trim().split(" ").length < 3) {
+    if (normalizeLinkText(element).split(" ").length < 3) {
         return null;
     }
+
+    console.log(element.innerHTML);
+    console.log(normalizeLinkText(element));
 
     var spoiler = null;
 
@@ -50,11 +53,11 @@ function findSpoiler(element) {
 }
 
 function matchUnparsedSpoiler(spoiler, element) {
-    return spoiler.indexOf(element.innerHTML.trim()) != -1;
+    return spoiler.indexOf(normalizeLinkText(element)) != -1;
 }
 
 function extractUnparsedSpoiler(spoiler, element) {
-    var spoilText = spoiler.replace(element.innerHTML.trim(), "").trim();
+    var spoilText = spoiler.replace(normalizeLinkText(element), "").trim();
 
     // Ignore "IS:", "AM:" and the like
     spoilText = spoilText.replace(/[A-Z&]+:/, "");
@@ -70,6 +73,21 @@ function extractUnparsedSpoiler(spoiler, element) {
         title: title,
         spoiler: spoilText
     };
+}
+
+function normalizeLinkText(element) {
+    var normalized = element.innerHTML;
+
+    // Strip html tags
+    normalized = normalized.replace(/<\/?.+?>/g, "");
+
+    // Strip words that look like times
+    normalized = normalized.replace(/[0-9]{2}:[0-9]{2}/, "");
+
+    // Turn line breaks into spaces and strip double spaces
+    normalized = normalized.replace(/(\r\n|\n|\r)/gm," ").replace(/  +/g, " ");
+
+    return normailzed.trim();
 }
 
 function spoil(element, spoiler) {
