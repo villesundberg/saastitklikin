@@ -3,6 +3,10 @@ Säästit Klikin Chrome Extension
 
 This Chrome extension fixes news headlines by injecting spoilers. Spoilers are sourced from [@saastitklikin](https://twitter.com/saastitklikin) on Twitter.
 
+This is a development version that modifies the contents of websites you visit and comes with absolutely no warranty.
+
+Once major bugs are ironed out, a version will be published in the Chrome Web Store.
+
 Installation
 ---
 
